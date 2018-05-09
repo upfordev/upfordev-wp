@@ -1,0 +1,82 @@
+// Variables
+@themes: "../../themes";
+
+// ----------------------------Media queries
+
+/* Those wide screens above 1280px */
+@desktop-lg: ~"only screen and (min-width: 1281px)";
+
+/* Smaller than standard 960 (devices and browsers) */
+@desktop-md: ~"@only screen and (max-width: 959px)";
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@desktop-sm: ~"only screen and (min-width: 768px) and (max-width: 959px)";
+
+/* All Mobile Sizes (devices and browser) */
+@mobile-lg: ~"only screen and (max-width: 767px)";
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@mobile-md: ~"only screen and (min-width: 480px) and (max-width: 767px)";
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@mobile-sm: ~"only screen and (max-width: 479px)";
+
+// ---------------------------------------------------
+
+@import "@{themes}/naked-wordpress/style.css";
+
+//-----------------------------------------------------------------------
+// Simplest possible px to rem conversion with LESS
+
+// Let's say you want to convert the following pixel values
+
+// .example {
+//   font-size: 16px;
+//   margin: 20px 0;
+//   padding: 20px 10px;
+// }
+
+// 1. Define a base font size. For example, 16px for the <html> root would translate to @px: 16rem;
+
+@px: 10rem;
+
+// 2. Set your pixel values as fractions. For example, 16px would be 16/@px, 200px would be 200/@px, and so on.
+
+.example {
+  font-size: 16/@px;
+  margin: 20/@px 0;
+  padding: 20/@px 10/@px;
+}
+
+// Compiled output
+
+// .example {
+//   font-size: 1rem;
+//   margin: 1.25rem 0;
+//   padding: 1.25rem 0.625rem;
+//  }
+
+// http://lesscss.org/features/#features-overview-feature-operations
+//***************************************************************************
+
+.site-header {
+  :after {
+    clear: both;
+  };
+  padding: 0 20/@px;
+
+  .site-title {
+    float: left;
+    a {
+      font-size: 25/@px;
+    }
+  }
+
+  .site-description {
+    display: none;
+  }
+
+  .site-navigation {
+    float: right;
+  }
+}
